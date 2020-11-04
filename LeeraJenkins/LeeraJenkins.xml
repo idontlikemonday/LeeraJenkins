@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LeeraJenkins</name>
+    </assembly>
+    <members>
+        <member name="T:LeeraJenkins.UnityMvcActivator">
+            <summary>
+            Provides the bootstrapping for integrating Unity with ASP.NET MVC.
+            </summary>
+        </member>
+        <member name="M:LeeraJenkins.UnityMvcActivator.Start">
+            <summary>
+            Integrates Unity when the application starts.
+            </summary>
+        </member>
+        <member name="M:LeeraJenkins.UnityMvcActivator.Shutdown">
+            <summary>
+            Disposes the Unity container when the application is shut down.
+            </summary>
+        </member>
+        <member name="M:LeeraJenkins.Controllers.GameController.GetGameList">
+            <summary>
+            Get all games from g-sheet table
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LeeraJenkins.Controllers.GameController.GetGameList(System.String)">
+            <summary>
+            Get all games from g-sheet table for player with playerName
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LeeraJenkins.Controllers.GameController.GetVacantGameList">
+            <summary>
+            Get games from g-sheet table having at least 1 empty slot
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LeeraJenkins.Controllers.GameController.GetVacantGameList(System.String)">
+            <summary>
+            Get games from g-sheet table having at least 1 empty slot for player with playerName
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

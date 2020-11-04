@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TgBotModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dialog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DialogStep">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserDialogId" Type="bigint" Nullable="false" />
+          <Property Name="StepNum" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GamePlayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GameRegistrationId" Type="bigint" Nullable="false" />
+          <Property Name="PlayerId" Type="bigint" />
+          <Property Name="IsHost" Type="bit" Nullable="false" />
+          <Property Name="PlayerNum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GameRegistration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Place" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Duration" Type="nvarchar" MaxLength="100" />
+          <Property Name="MaxPlayers" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="int" />
+          <Property Name="SheetRowId" Type="bigint" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Host" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateRaw" Type="nvarchar" MaxLength="255" />
+          <Property Name="TimeRaw" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="TgName" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChatId" Type="bigint" Nullable="false" />
+          <Property Name="TelegramName" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserDialog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="DialogId" Type="bigint" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="StackTrace" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar(max)" />
+          <Property Name="Action" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'tg.dbo.GameRegistrationUnfinished' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GameRegistrationUnfinished">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Guid" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Place" />
+            <PropertyRef Name="Created" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Place" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Duration" Type="nvarchar" MaxLength="100" />
+          <Property Name="MaxPlayers" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="int" />
+          <Property Name="SheetRowId" Type="bigint" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Host" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateRaw" Type="nvarchar" MaxLength="255" />
+          <Property Name="TimeRaw" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_DialogStep_UserDialog_Id">
+          <End Role="UserDialog" Type="Self.UserDialog" Multiplicity="1" />
+          <End Role="DialogStep" Type="Self.DialogStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDialog">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DialogStep">
+              <PropertyRef Name="UserDialogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GamePlayer_Game_Id">
+          <End Role="GameRegistration" Type="Self.GameRegistration" Multiplicity="1" />
+          <End Role="GamePlayer" Type="Self.GamePlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GameRegistration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GamePlayer">
+              <PropertyRef Name="GameRegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GamePlayer_Player_Id">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="GamePlayer" Type="Self.GamePlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GamePlayer">
+              <PropertyRef Name="PlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDialog_Dialog_Id">
+          <End Role="Dialog" Type="Self.Dialog" Multiplicity="1" />
+          <End Role="UserDialog" Type="Self.UserDialog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dialog">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserDialog">
+              <PropertyRef Name="DialogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDialog_User_Id">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserDialog" Type="Self.UserDialog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserDialog">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TgBotModelStoreContainer">
+          <EntitySet Name="Dialog" EntityType="Self.Dialog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DialogStep" EntityType="Self.DialogStep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GamePlayer" EntityType="Self.GamePlayer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GameRegistration" EntityType="Self.GameRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDialog" EntityType="Self.UserDialog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="log" store:Type="Tables" />
+          <EntitySet Name="UserAction" EntityType="Self.UserAction" Schema="log" store:Type="Tables" />
+          <EntitySet Name="GameRegistrationUnfinished" EntityType="Self.GameRegistrationUnfinished" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GameRegistrationUnfinished].[Id] AS [Id], 
+    [GameRegistrationUnfinished].[Guid] AS [Guid], 
+    [GameRegistrationUnfinished].[Name] AS [Name], 
+    [GameRegistrationUnfinished].[Date] AS [Date], 
+    [GameRegistrationUnfinished].[Place] AS [Place], 
+    [GameRegistrationUnfinished].[Link] AS [Link], 
+    [GameRegistrationUnfinished].[Description] AS [Description], 
+    [GameRegistrationUnfinished].[Duration] AS [Duration], 
+    [GameRegistrationUnfinished].[MaxPlayers] AS [MaxPlayers], 
+    [GameRegistrationUnfinished].[Status] AS [Status], 
+    [GameRegistrationUnfinished].[SheetRowId] AS [SheetRowId], 
+    [GameRegistrationUnfinished].[Created] AS [Created], 
+    [GameRegistrationUnfinished].[Host] AS [Host], 
+    [GameRegistrationUnfinished].[DateRaw] AS [DateRaw], 
+    [GameRegistrationUnfinished].[TimeRaw] AS [TimeRaw]
+    FROM [dbo].[GameRegistrationUnfinished] AS [GameRegistrationUnfinished]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_DialogStep_UserDialog_Id" Association="Self.FK_DialogStep_UserDialog_Id">
+            <End Role="UserDialog" EntitySet="UserDialog" />
+            <End Role="DialogStep" EntitySet="DialogStep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GamePlayer_Game_Id" Association="Self.FK_GamePlayer_Game_Id">
+            <End Role="GameRegistration" EntitySet="GameRegistration" />
+            <End Role="GamePlayer" EntitySet="GamePlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GamePlayer_Player_Id" Association="Self.FK_GamePlayer_Player_Id">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="GamePlayer" EntitySet="GamePlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDialog_Dialog_Id" Association="Self.FK_UserDialog_Dialog_Id">
+            <End Role="Dialog" EntitySet="Dialog" />
+            <End Role="UserDialog" EntitySet="UserDialog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDialog_User_Id" Association="Self.FK_UserDialog_User_Id">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserDialog" EntitySet="UserDialog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TgBotModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GamePlayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameRegistrationId" Type="Int64" Nullable="false" />
+          <Property Name="PlayerId" Type="Int64" />
+          <Property Name="IsHost" Type="Boolean" Nullable="false" />
+          <Property Name="PlayerNum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GameRegistration" Relationship="Self.FK_GamePlayer_Game_Id" FromRole="GamePlayer" ToRole="GameRegistration" />
+          <NavigationProperty Name="Player" Relationship="Self.FK_GamePlayer_Player_Id" FromRole="GamePlayer" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="GameRegistration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Duration" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MaxPlayers" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="GamePlayer" Relationship="Self.FK_GamePlayer_Game_Id" FromRole="GameRegistration" ToRole="GamePlayer" />
+          <Property Name="Place" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SheetRowId" Type="Int64" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Host" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DateRaw" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TimeRaw" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TgName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GamePlayer" Relationship="Self.FK_GamePlayer_Player_Id" FromRole="Player" ToRole="GamePlayer" />
+        </EntityType>
+        <Association Name="FK_GamePlayer_Game_Id">
+          <End Role="GameRegistration" Type="Self.GameRegistration" Multiplicity="1" />
+          <End Role="GamePlayer" Type="Self.GamePlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GameRegistration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GamePlayer">
+              <PropertyRef Name="GameRegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GamePlayer_Player_Id">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="GamePlayer" Type="Self.GamePlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GamePlayer">
+              <PropertyRef Name="PlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TgEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GamePlayer" EntityType="Self.GamePlayer" />
+          <EntitySet Name="GameRegistration" EntityType="Self.GameRegistration" />
+          <EntitySet Name="Player" EntityType="Self.Player" />
+          <AssociationSet Name="FK_GamePlayer_Game_Id" Association="Self.FK_GamePlayer_Game_Id">
+            <End Role="GameRegistration" EntitySet="GameRegistration" />
+            <End Role="GamePlayer" EntitySet="GamePlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GamePlayer_Player_Id" Association="Self.FK_GamePlayer_Player_Id">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="GamePlayer" EntitySet="GamePlayer" />
+          </AssociationSet>
+          <EntitySet Name="User" EntityType="TgBotModel.User" />
+          <EntitySet Name="Log" EntityType="TgBotModel.Log" />
+          <EntitySet Name="GameRegistrationUnfinished" EntityType="TgBotModel.GameRegistrationUnfinished" />
+          <EntitySet Name="UserAction" EntityType="TgBotModel.UserAction" />
+          <EntitySet Name="Dialog" EntityType="TgBotModel.Dialog" />
+          <EntitySet Name="DialogStep" EntityType="TgBotModel.DialogStep" />
+          <EntitySet Name="UserDialog" EntityType="TgBotModel.UserDialog" />
+          <AssociationSet Name="FK_UserDialog_Dialog_Id" Association="TgBotModel.FK_UserDialog_Dialog_Id">
+            <End Role="Dialog" EntitySet="Dialog" />
+            <End Role="UserDialog" EntitySet="UserDialog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DialogStep_UserDialog_Id" Association="TgBotModel.FK_DialogStep_UserDialog_Id">
+            <End Role="UserDialog" EntitySet="UserDialog" />
+            <End Role="DialogStep" EntitySet="DialogStep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDialog_User_Id" Association="TgBotModel.FK_UserDialog_User_Id">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserDialog" EntitySet="UserDialog" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChatId" Type="Int64" Nullable="false" />
+          <Property Name="TelegramName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserDialog" Relationship="TgBotModel.FK_UserDialog_User_Id" FromRole="User" ToRole="UserDialog" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GameRegistrationUnfinished">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Guid" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Place" />
+            <PropertyRef Name="Created" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Place" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Duration" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MaxPlayers" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="SheetRowId" Type="Int64" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Host" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DateRaw" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TimeRaw" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Dialog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserDialog" Relationship="TgBotModel.FK_UserDialog_Dialog_Id" FromRole="Dialog" ToRole="UserDialog" />
+        </EntityType>
+        <EntityType Name="DialogStep">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserDialogId" Type="Int64" Nullable="false" />
+          <Property Name="StepNum" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="UserDialog" Relationship="TgBotModel.FK_DialogStep_UserDialog_Id" FromRole="DialogStep" ToRole="UserDialog" />
+        </EntityType>
+        <EntityType Name="UserDialog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="DialogId" Type="Int64" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dialog" Relationship="TgBotModel.FK_UserDialog_Dialog_Id" FromRole="UserDialog" ToRole="Dialog" />
+          <NavigationProperty Name="DialogStep" Relationship="TgBotModel.FK_DialogStep_UserDialog_Id" FromRole="UserDialog" ToRole="DialogStep" />
+          <NavigationProperty Name="User" Relationship="TgBotModel.FK_UserDialog_User_Id" FromRole="UserDialog" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UserDialog_Dialog_Id">
+          <End Type="TgBotModel.Dialog" Role="Dialog" Multiplicity="1" />
+          <End Type="TgBotModel.UserDialog" Role="UserDialog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dialog">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserDialog">
+              <PropertyRef Name="DialogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DialogStep_UserDialog_Id">
+          <End Type="TgBotModel.UserDialog" Role="UserDialog" Multiplicity="1" />
+          <End Type="TgBotModel.DialogStep" Role="DialogStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDialog">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DialogStep">
+              <PropertyRef Name="UserDialogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDialog_User_Id">
+          <End Type="TgBotModel.User" Role="User" Multiplicity="1" />
+          <End Type="TgBotModel.UserDialog" Role="UserDialog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserDialog">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TgBotModelStoreContainer" CdmEntityContainer="TgEntities">
+          <EntitySetMapping Name="GamePlayer">
+            <EntityTypeMapping TypeName="TgBotModel.GamePlayer">
+              <MappingFragment StoreEntitySet="GamePlayer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GameRegistrationId" ColumnName="GameRegistrationId" />
+                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+                <ScalarProperty Name="IsHost" ColumnName="IsHost" />
+                <ScalarProperty Name="PlayerNum" ColumnName="PlayerNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameRegistration">
+            <EntityTypeMapping TypeName="TgBotModel.GameRegistration">
+              <MappingFragment StoreEntitySet="GameRegistration">
+                <ScalarProperty Name="TimeRaw" ColumnName="TimeRaw" />
+                <ScalarProperty Name="DateRaw" ColumnName="DateRaw" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="SheetRowId" ColumnName="SheetRowId" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="MaxPlayers" ColumnName="MaxPlayers" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Player">
+            <EntityTypeMapping TypeName="TgBotModel.Player">
+              <MappingFragment StoreEntitySet="Player">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TgName" ColumnName="TgName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="TgBotModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TelegramName" ColumnName="TelegramName" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log">
+            <EntityTypeMapping TypeName="TgBotModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameRegistrationUnfinished">
+            <EntityTypeMapping TypeName="TgBotModel.GameRegistrationUnfinished">
+              <MappingFragment StoreEntitySet="GameRegistrationUnfinished">
+                <ScalarProperty Name="TimeRaw" ColumnName="TimeRaw" />
+                <ScalarProperty Name="DateRaw" ColumnName="DateRaw" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="SheetRowId" ColumnName="SheetRowId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MaxPlayers" ColumnName="MaxPlayers" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAction">
+            <EntityTypeMapping TypeName="TgBotModel.UserAction">
+              <MappingFragment StoreEntitySet="UserAction">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dialog">
+            <EntityTypeMapping TypeName="TgBotModel.Dialog">
+              <MappingFragment StoreEntitySet="Dialog">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DialogStep">
+            <EntityTypeMapping TypeName="TgBotModel.DialogStep">
+              <MappingFragment StoreEntitySet="DialogStep">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="StepNum" ColumnName="StepNum" />
+                <ScalarProperty Name="UserDialogId" ColumnName="UserDialogId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDialog">
+            <EntityTypeMapping TypeName="TgBotModel.UserDialog">
+              <MappingFragment StoreEntitySet="UserDialog">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DialogId" ColumnName="DialogId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

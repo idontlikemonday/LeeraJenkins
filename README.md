@@ -1,2 +1,2 @@
 # LeeraJenkins
-Telegram Bot for booking participation in board games for BGC Moscow (https://vk.com/bgc_moscow)
+Telegram Bot used for booking participation in board games oeganized by BGC Moscow (https://vk.com/bgc_moscow)

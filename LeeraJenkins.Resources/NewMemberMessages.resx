@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="String" xml:space="preserve">
+    <value>привет, {0} !{3}как дела? а расскажи про свои любимые игры? Во что играешь чаще всего?{3}Мы тут частенько собираемся поиграть, в &lt;a href="{1}"&gt;Табличке&lt;/a&gt; обычно записываемся на будущие встречи. Жду тебя! ;){3}Вот здесь &lt;a href="{2}"&gt;ответы на все вопросы&lt;/a&gt; , а ещё можешь написать мне в личные сообщения, я помогу записаться на игры)</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>{0}, хэй, здарова!{3}надо пройти обряд посвящения – рассказать про пару-тройку своих любимых настолочек) тут так принято.{3}А ещё у нас принято иногда собираться да и поиграть в них) Вот в этой &lt;a href="{1}"&gt;Табличке&lt;/a&gt; мы записываемся на игровечера!{3}А вот тут &lt;a href="{2}"&gt;Инструкция&lt;/a&gt;, где я отвечаю на все основные вопросы){3}Напиши мне в личку, если нужна помощь в записи на игры)</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>приветик, {0} ){3}а мы тут настолочками балуемся. Какие у тебя любимые? Присоединяйся, мы иногда собираемся и вечерами играем) Вот тут наша &lt;a href="{1}"&gt;Табличка&lt;/a&gt;, посмотри, что там интересного предлагают ){3}Вкратце о нас, и что тут происходит – вот &lt;a href="{2}"&gt;Инструкция&lt;/a&gt;.{3}Нужна помощь в записи на игры – пиши мне в личку, разберёмся))</value>
+  </data>
+  <data name="String3" xml:space="preserve">
+    <value>ого, кто у нас тут!) {0} !{3}я тебя где-то видела… хм. А расскажи, какие настольные игры тебе нравятся? Со мной вот только в Манчкин играют :({3}А ещё мы собираемся по четвергам поиграть, вот тут &lt;a href="{1}"&gt;Табличка&lt;/a&gt; с записью на игры.{3}Небольшая презентация о нас – смотри &lt;a href="{2}"&gt;FAQ&lt;/a&gt;.{3}А ещё можешь написать мне в личку, помогу выбрать игру и записаться на неё )</value>
+  </data>
+  <data name="String4" xml:space="preserve">
+    <value>{0}, привет){3}мы тут всех новичков просим посоветовать хорошие настольные игры, что у тебя есть на примете? ){3}Может, заодно и принесёшь их на наши игровые вечера? Вот &lt;a href="{1}"&gt;тут&lt;/a&gt; можно посмотреть, что приносят остальные){3}А &lt;a href="{2}"&gt;здесь&lt;/a&gt; ты найдёшь все основные вопросы и ответы){3}Я помогу тебе записаться на игру, если напишешь мне в личку ;)</value>
+  </data>
+  <data name="String5" xml:space="preserve">
+    <value>Приветики, {0} ){3}спаси меня, они меня все тут убеждают, что Монополия – плохая игра(( у тебя есть что-нибудь подобное, но чтобы не было стыдно?{3}кстати, можешь заодно вот &lt;a href="{1}"&gt;тут&lt;/a&gt; посмотреть, что наши ребята приносят на игровые вечера. И тоже приходи )){3}Смотри, а ещё &lt;a href="{2}"&gt;здесь&lt;/a&gt; ты найдёшь все основные вопросы и ответы){3}И напоследок: напиши мне в личку, если требуется помощь в записи на игры ;)</value>
+  </data>
+  <data name="String6" xml:space="preserve">
+    <value>приветик, {0}! Во что играешь обычно?{3}вот &lt;a href="{1}"&gt;здесь&lt;/a&gt; у нас планы на ближайшие игровые вечера ) придёшь?{3}Вот &lt;a href="{2}"&gt;тут&lt;/a&gt; ты найдёшь все основные вопросы и ответы){3}Ну и можешь написать мне в личку, я помогу с записью на игры)</value>
+  </data>
+  <data name="String7" xml:space="preserve">
+    <value>{0}, здравствуй!{3}Смотри, у меня есть &lt;a href="{1}"&gt;ссылка,&lt;/a&gt; где все записываются на игровые вечера, а ты мне давай в ответ свои любимые настольные игры)){3}Если возникнут вопросы, &lt;a href="{2}"&gt;тут&lt;/a&gt; есть на них ответы){3}А ещё я могу помочь записаться на игру и напомнить о ней заранее) ты только напиши мне в личные сообщения…</value>
+  </data>
+  <data name="String8" xml:space="preserve">
+    <value>{0}, о, ещё один новичок! ну привет. Проходи, присаживайся. У нас тут клуб анонимных настольщиков. {3}Во что играешь, во что хочется сыграть? Обычно по четвергам у нас сборы в баре Guns&amp;Bears, приходи, сыграем!) вот &lt;a href="{1}"&gt;тут&lt;/a&gt;  можно записаться на что-то определённое!{3}Если есть вопросы - &lt;a href="{2}"&gt;здесь&lt;/a&gt; ты найдёшь все ответы на них){3}Напиши мне в личку, я помогу выбрать игру для записи)</value>
+  </data>
+  <data name="String9" xml:space="preserve">
+    <value>налетай на новичка! ) {0}{3}приходи на ближайший игровечер – у нас никто не кусается, правила настольных игр объясняют ) обычно собираемся по четвергам на Новослободской. Придёшь? вот &lt;a href="{1}"&gt;тут&lt;/a&gt; запись ) ждём!{3}p.s. если возникнут вопросы – ищи ответы &lt;a href="{2}"&gt;здесь&lt;/a&gt;.{3}А ещё можешь написать мне в личку – я подскажу, как записаться на игры ;)</value>
+  </data>
+</root>
